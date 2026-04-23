@@ -1,0 +1,38 @@
+{
+  "name": "tower-defense",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check .",
+    "format": "biome format --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ellalark/tower-defense.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "bugs": {
+    "url": "https://github.com/ellalark/tower-defense/issues"
+  },
+  "homepage": "https://github.com/ellalark/tower-defense#readme",
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.12",
+    "vite": "^8.0.10",
+    "vitest": "^4.1.5"
+  },
+  "dependencies": {
+    "phaser": "^4.0.0"
+  }
+}
