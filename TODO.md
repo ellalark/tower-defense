@@ -26,7 +26,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **0.4 Create folder skeleton.** Make every directory listed in TECHSPEC §3, each with an empty `.gitkeep`. Add `index.html` that mounts a `<div id="game">` and imports `/src/main.js`.
   - Acceptance: folder tree matches spec; `index.html` loads without 404s on `npm run dev`.
 
-- [ ] **0.5 Boot Phaser with an empty scene.** `src/main.js` creates a `Phaser.Game` with canvas parented to `#game` and a single placeholder scene that renders a solid color. No assets yet.
+- [x] **0.5 Boot Phaser with an empty scene.** `src/main.js` creates a `Phaser.Game` with canvas parented to `#game` and a single placeholder scene that renders a solid color. No assets yet.
   - Acceptance: `npm run dev` shows a colored canvas in the browser, no console errors.
 
 ---
