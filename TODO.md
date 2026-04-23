@@ -20,7 +20,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **0.2 Install dev toolchain.** Install latest stable `vite`, `vitest`, `@biomejs/biome`, `phaser`. Add scripts: `dev`, `build`, `preview`, `test`, `test:watch`, `lint`, `format` (per TECHSPEC §8).
   - Acceptance: `npm run lint`, `npm run test` both execute (can return "no files" — they must not crash).
 
-- [ ] **0.3 Configure Vite and Biome.** Create `vite.config.js` (default config, sets `/assets` as additional publicDir-style source if needed) and `biome.json` with default rules plus the three project rules in TECHSPEC §8 (no Phaser in logic dirs, no `localStorage` outside `/src/save`, no `Math.random()` outside `/src/rng` whitelist). Use Biome `overrides` keyed by path globs.
+- [x] **0.3 Configure Vite and Biome.** Create `vite.config.js` (default config, sets `/assets` as additional publicDir-style source if needed) and `biome.json` with default rules plus the three project rules in TECHSPEC §8 (no Phaser in logic dirs, no `localStorage` outside `/src/save`, no `Math.random()` outside `/src/rng` whitelist). Use Biome `overrides` keyed by path globs.
   - Acceptance: `npm run lint` exits 0 on an empty tree; config files committed.
 
 - [ ] **0.4 Create folder skeleton.** Make every directory listed in TECHSPEC §3, each with an empty `.gitkeep`. Add `index.html` that mounts a `<div id="game">` and imports `/src/main.js`.
