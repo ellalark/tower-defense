@@ -36,7 +36,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **1.1 Seeded RNG.** Implement `src/rng/seeded.js`: mulberry32 generator factory + helpers `intInRange`, `floatInRange`, `pickWeighted`, `shuffle`. Every helper takes a generator instance.
   - Acceptance: unit tests cover determinism (same seed → same sequence), bounds, weighted distribution correctness over N=10k.
 
-- [ ] **1.2 Constants module.** `src/config/constants.js` exports `TICK_MS = 1000/60`, `BASE_HP_DEFAULT`, `STARTING_BUDGET_DEFAULT`, `SPEED_MULTIPLIERS = [1,2,3]`, and a `SAVE_NAMESPACE` string.
+- [x] **1.2 Constants module.** `src/config/constants.js` exports `TICK_MS = 1000/60`, `BASE_HP_DEFAULT`, `STARTING_BUDGET_DEFAULT`, `SPEED_MULTIPLIERS = [1,2,3]`, and a `SAVE_NAMESPACE` string.
   - Acceptance: imported by later modules; no tests needed.
 
 - [ ] **1.3 Event bus.** `src/state/events.js`: tiny pub/sub — `on(name, fn)`, `off(name, fn)`, `emit(name, payload)`. Synchronous, listeners run in subscription order.
