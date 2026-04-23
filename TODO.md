@@ -61,7 +61,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 
 ## Phase 2 — Entity logic (no Phaser)
 
-- [ ] **2.1 Pathing module.** `src/systems/pathing.js`: `buildPath(waypoints)` returns a polyline with cached segment lengths; `pointAtDistance(path, d)` returns `{x, y, segmentIndex}` clamped to total length.
+- [x] **2.1 Pathing module.** `src/systems/pathing.js`: `buildPath(waypoints)` returns a polyline with cached segment lengths; `pointAtDistance(path, d)` returns `{x, y, segmentIndex}` clamped to total length.
   - Acceptance: tests for straight, L-shape, and multi-segment paths; out-of-range distances clamp correctly.
 
 - [ ] **2.2 Enemy logic class.** `src/entities/logic/Enemy.js`: fields for hp, speed (units/tick), path, distanceTravelled, armor, flags (flying, stealth, shielded). `tick(dt, world)` advances position. `applyDamage(amount, type)` respects soft-counter modifiers.
