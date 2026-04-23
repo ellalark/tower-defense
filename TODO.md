@@ -45,7 +45,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **1.4 State store.** `src/state/store.js`: singleton with `getState`, `setState(partial)` (shallow merge), `subscribe(listener)`, `reset()`. Initial shape includes fields in TECHSPEC §4.2.
   - Acceptance: tests verify merge semantics, subscribe fires on change, reset restores initial shape.
 
-- [ ] **1.5 Save schema + migrations.** `src/save/schema.js`: defines v1 shape (per TECHSPEC §6.4), exports `CURRENT_VERSION = 1` and `migrations = []`. Include a `migrate(oldState)` that walks versions in order.
+- [x] **1.5 Save schema + migrations.** `src/save/schema.js`: defines v1 shape (per TECHSPEC §6.4), exports `CURRENT_VERSION = 1` and `migrations = []`. Include a `migrate(oldState)` that walks versions in order.
   - Acceptance: tests run a v1 state through migrate unchanged; a fake v0 → v1 migration proves the chain mechanism.
 
 - [ ] **1.6 localStorage adapter.** `src/save/localStorageAdapter.js`: `read()`, `write(obj)`, `clear()`. Namespaced key from constants. Handles JSON parse errors by returning null.
