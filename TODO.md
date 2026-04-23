@@ -54,7 +54,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **1.7 Save public API.** `src/save/save.js`: `load()`, `save(partial)`, `clear()`, `getVersion()`. `load()` returns migrated state or a fresh default if none exists. `save()` shallow-merges over the current stored blob.
   - Acceptance: tests for fresh load, round-trip, migration-on-load, and that `save({settings: {volume: 0.5}})` preserves other keys.
 
-- [ ] **1.8 Fixed-step tick loop.** `src/systems/tickLoop.js`: exports `createLoop({onTick})` returning `{ advance(deltaMs, speedMultiplier), reset() }`. Accumulates delta, flushes whole ticks, supports 1×/2×/3× via an integer max-ticks-per-frame cap.
+- [x] **1.8 Fixed-step tick loop.** `src/systems/tickLoop.js`: exports `createLoop({onTick})` returning `{ advance(deltaMs, speedMultiplier), reset() }`. Accumulates delta, flushes whole ticks, supports 1×/2×/3× via an integer max-ticks-per-frame cap.
   - Acceptance: tests verify: N ms of delta → floor(N/TICK_MS) ticks; leftover carries; 2× speed runs twice as many ticks per frame; reset zeros the accumulator.
 
 ---
