@@ -48,7 +48,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **1.5 Save schema + migrations.** `src/save/schema.js`: defines v1 shape (per TECHSPEC §6.4), exports `CURRENT_VERSION = 1` and `migrations = []`. Include a `migrate(oldState)` that walks versions in order.
   - Acceptance: tests run a v1 state through migrate unchanged; a fake v0 → v1 migration proves the chain mechanism.
 
-- [ ] **1.6 localStorage adapter.** `src/save/localStorageAdapter.js`: `read()`, `write(obj)`, `clear()`. Namespaced key from constants. Handles JSON parse errors by returning null.
+- [x] **1.6 localStorage adapter.** `src/save/localStorageAdapter.js`: `read()`, `write(obj)`, `clear()`. Namespaced key from constants. Handles JSON parse errors by returning null.
   - Acceptance: tests use a stub `localStorage` to verify read/write/clear and malformed-JSON safety.
 
 - [ ] **1.7 Save public API.** `src/save/save.js`: `load()`, `save(partial)`, `clear()`, `getVersion()`. `load()` returns migrated state or a fresh default if none exists. `save()` shallow-merges over the current stored blob.
