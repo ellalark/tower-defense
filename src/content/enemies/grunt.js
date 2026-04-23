@@ -1,5 +1,6 @@
 export const grunt = {
   id: 'grunt',
+  archetype: 'grunt',
   name: 'Grunt',
   hp: 10,
   speed: 0.5,

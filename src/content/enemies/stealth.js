@@ -1,5 +1,6 @@
 export const stealth = {
   id: 'stealth',
+  archetype: 'stealth',
   name: 'Stealth',
   hp: 8,
   speed: 0.7,

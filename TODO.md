@@ -79,7 +79,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **2.6 Tower logic class.** `src/entities/logic/Tower.js`: fields for stats, level, cooldown (ticks), ability cooldown, range, targeting mode. `tick(dt, world)` picks a target and fires when off-cooldown. `upgrade()` applies next-level stats and deducts cost. `canActivate()` / `activate(rng, world)` for active ability.
   - Acceptance: tests for firing cadence, upgrade stat application + cost check, ability gating by cooldown.
 
-- [ ] **2.7 Damage resolution module.** `src/systems/damage.js`: `resolveDamage({amount, type, enemy})` applies archetype modifiers (sniper vs tank strong, chain vs swarm strong, etc.) and returns final damage dealt. Soft counters only — never zero unless amount was zero.
+- [x] **2.7 Damage resolution module.** `src/systems/damage.js`: `resolveDamage({amount, type, enemy})` applies archetype modifiers (sniper vs tank strong, chain vs swarm strong, etc.) and returns final damage dealt. Soft counters only — never zero unless amount was zero.
   - Acceptance: tests assert modifiers for each named matchup and that no combination reduces damage to zero for positive inputs.
 
 ---

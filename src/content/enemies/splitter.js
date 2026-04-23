@@ -1,5 +1,6 @@
 export const splitter = {
   id: 'splitter',
+  archetype: 'splitter',
   name: 'Splitter',
   hp: 20,
   speed: 0.5,
