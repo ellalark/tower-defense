@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { Enemy } from '../../../src/entities/logic/Enemy.js';
-import { applyBurn, applySlow, applyStun } from '../../../src/systems/damage.js';
+import { applyBurn, applySlow, applyStun, resolveDamage } from '../../../src/systems/damage.js';
 import { buildPath } from '../../../src/systems/pathing.js';
 
 function makeWorld() {
@@ -214,5 +214,104 @@ describe('Enemy.tick integration with status effects', () => {
     expect(enemy.distanceTravelled).toBe(5);
     enemy.tick(1, world);
     expect(enemy.distanceTravelled).toBe(15);
+  });
+});
+
+describe('resolveDamage', () => {
+  it('singleTargetDps vs tank → 1.5x', () => {
+    expect(
+      resolveDamage({ amount: 100, type: 'singleTargetDps', enemy: { archetype: 'tank' } }),
+    ).toBe(150);
+  });
+
+  it('singleTargetDps vs boss → 1.5x', () => {
+    expect(
+      resolveDamage({ amount: 100, type: 'singleTargetDps', enemy: { archetype: 'boss' } }),
+    ).toBe(150);
+  });
+
+  it('singleTargetDps vs fast → 0.7x', () => {
+    expect(
+      resolveDamage({ amount: 100, type: 'singleTargetDps', enemy: { archetype: 'fast' } }),
+    ).toBe(70);
+  });
+
+  it('splash vs grunt → 1.5x', () => {
+    expect(resolveDamage({ amount: 100, type: 'splash', enemy: { archetype: 'grunt' } })).toBe(150);
+  });
+
+  it('splash vs fast → 1.5x', () => {
+    expect(resolveDamage({ amount: 100, type: 'splash', enemy: { archetype: 'fast' } })).toBe(150);
+  });
+
+  it('splash vs tank → 0.7x', () => {
+    expect(resolveDamage({ amount: 100, type: 'splash', enemy: { archetype: 'tank' } })).toBe(70);
+  });
+
+  it('chain vs fast → 1.5x', () => {
+    expect(resolveDamage({ amount: 100, type: 'chain', enemy: { archetype: 'fast' } })).toBe(150);
+  });
+
+  it('chain vs grunt → 1.5x', () => {
+    expect(resolveDamage({ amount: 100, type: 'chain', enemy: { archetype: 'grunt' } })).toBe(150);
+  });
+
+  it('chain vs tank → 0.7x', () => {
+    expect(resolveDamage({ amount: 100, type: 'chain', enemy: { archetype: 'tank' } })).toBe(70);
+  });
+
+  it('chain vs boss → 0.7x', () => {
+    expect(resolveDamage({ amount: 100, type: 'chain', enemy: { archetype: 'boss' } })).toBe(70);
+  });
+
+  it('pass-through — known tower vs unknown archetype', () => {
+    expect(
+      resolveDamage({ amount: 100, type: 'singleTargetDps', enemy: { archetype: 'flying' } }),
+    ).toBe(100);
+  });
+
+  it('pass-through — slow vs any archetype', () => {
+    expect(resolveDamage({ amount: 100, type: 'slow', enemy: { archetype: 'tank' } })).toBe(100);
+  });
+
+  it('pass-through — support vs any archetype', () => {
+    expect(resolveDamage({ amount: 100, type: 'support', enemy: { archetype: 'grunt' } })).toBe(
+      100,
+    );
+  });
+
+  it('pass-through — economy vs any archetype', () => {
+    expect(resolveDamage({ amount: 100, type: 'economy', enemy: { archetype: 'boss' } })).toBe(100);
+  });
+
+  it('pass-through — unknown tower type', () => {
+    expect(resolveDamage({ amount: 100, type: 'unknown', enemy: { archetype: 'tank' } })).toBe(100);
+  });
+
+  it('never zero for positive input across all matchups', () => {
+    const towerTypes = ['singleTargetDps', 'splash', 'slow', 'chain', 'support', 'economy'];
+    const archetypes = [
+      'grunt',
+      'tank',
+      'fast',
+      'flying',
+      'shielded',
+      'stealth',
+      'splitter',
+      'healer',
+      'boss',
+    ];
+    for (const type of towerTypes) {
+      for (const archetype of archetypes) {
+        const result = resolveDamage({ amount: 1, type, enemy: { archetype } });
+        expect(result, `${type} vs ${archetype}`).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it('zero amount stays zero', () => {
+    expect(
+      resolveDamage({ amount: 0, type: 'singleTargetDps', enemy: { archetype: 'tank' } }),
+    ).toBe(0);
   });
 });

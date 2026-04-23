@@ -1,5 +1,6 @@
 export const healer = {
   id: 'healer',
+  archetype: 'healer',
   name: 'Healer',
   hp: 25,
   speed: 0.4,

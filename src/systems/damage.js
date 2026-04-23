@@ -1,5 +1,21 @@
 import { BurnEffect, SlowEffect, StunEffect } from '../entities/logic/StatusEffect.js';
 
+const MATCHUPS = {
+  singleTargetDps: { tank: 1.5, boss: 1.5, fast: 0.7 },
+  splash: { grunt: 1.5, fast: 1.5, tank: 0.7 },
+  chain: { fast: 1.5, grunt: 1.5, tank: 0.7, boss: 0.7 },
+  slow: {},
+  support: {},
+  economy: {},
+};
+
+export function resolveDamage({ amount, type, enemy }) {
+  const towerRow = MATCHUPS[type];
+  if (!towerRow) return amount;
+  const modifier = towerRow[enemy.archetype] ?? 1;
+  return amount * modifier;
+}
+
 export function applySlow(enemy, { durationTicks, factor }) {
   const existing = enemy.effects.find((e) => e.type === 'slow');
   if (existing) {

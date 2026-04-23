@@ -1,5 +1,6 @@
 export const tank = {
   id: 'tank',
+  archetype: 'tank',
   name: 'Tank',
   hp: 80,
   speed: 0.2,
