@@ -51,7 +51,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **1.6 localStorage adapter.** `src/save/localStorageAdapter.js`: `read()`, `write(obj)`, `clear()`. Namespaced key from constants. Handles JSON parse errors by returning null.
   - Acceptance: tests use a stub `localStorage` to verify read/write/clear and malformed-JSON safety.
 
-- [ ] **1.7 Save public API.** `src/save/save.js`: `load()`, `save(partial)`, `clear()`, `getVersion()`. `load()` returns migrated state or a fresh default if none exists. `save()` shallow-merges over the current stored blob.
+- [x] **1.7 Save public API.** `src/save/save.js`: `load()`, `save(partial)`, `clear()`, `getVersion()`. `load()` returns migrated state or a fresh default if none exists. `save()` shallow-merges over the current stored blob.
   - Acceptance: tests for fresh load, round-trip, migration-on-load, and that `save({settings: {volume: 0.5}})` preserves other keys.
 
 - [ ] **1.8 Fixed-step tick loop.** `src/systems/tickLoop.js`: exports `createLoop({onTick})` returning `{ advance(deltaMs, speedMultiplier), reset() }`. Accumulates delta, flushes whole ticks, supports 1×/2×/3× via an integer max-ticks-per-frame cap.
