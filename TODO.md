@@ -108,7 +108,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **4.2 Wave runner.** `src/systems/waveRunner.js`: given a sequence of `WaveDefinition`s (scripted map overlay + procedural fill), emits spawn events at the right ticks via the event bus. Handles continuous flow (PRD §7) — no gap between waves.
   - Acceptance: tests with a mock bus assert spawn ordering and timing for a scripted + procedural sequence; no idle ticks between waves.
 
-- [ ] **4.3 Map-to-waves wiring.** Helper `resolveWaveForNumber(mapId, waveNumber, rng)` returns scripted `WaveDefinition` if one exists, else falls back to procedural. Map 1 uses this.
+- [x] **4.3 Map-to-waves wiring.** Helper `resolveWaveForNumber(mapId, waveNumber, rng)` returns scripted `WaveDefinition` if one exists, else falls back to procedural. Map 1 uses this.
   - Acceptance: tests assert waves 1, 10, 20, 30 on Map 1 hit the scripted path; others use procedural.
 
 ---
