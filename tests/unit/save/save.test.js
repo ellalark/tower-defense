@@ -154,3 +154,82 @@ describe('createSave', () => {
     expect(warnSpy).not.toHaveBeenCalled();
   });
 });
+
+describe('recordPersonalBest', () => {
+  let warnSpy;
+
+  beforeEach(() => {
+    warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    warnSpy.mockRestore();
+  });
+
+  it('first entry: single-element array containing the entry; load() reflects the write', () => {
+    const adapter = makeStubAdapter();
+    const s = createSave(adapter);
+    const entry = { score: 42, waveReached: 5, kills: 10, seed: 'abc', dateISO: '2026-01-01' };
+    const result = s.recordPersonalBest('map1', entry);
+    expect(result).toHaveLength(1);
+    expect(result[0]).toEqual(entry);
+    expect(s.load().personalBests.map1).toEqual([entry]);
+  });
+
+  it('sort descending: entries recorded as [100, 300, 200] come back as [300, 200, 100]', () => {
+    const adapter = makeStubAdapter();
+    const s = createSave(adapter);
+    s.recordPersonalBest('map1', { score: 100, seed: 's1' });
+    s.recordPersonalBest('map1', { score: 300, seed: 's2' });
+    const result = s.recordPersonalBest('map1', { score: 200, seed: 's3' });
+    expect(result.map((e) => e.score)).toEqual([300, 200, 100]);
+  });
+
+  it('top-N trimming: 12 entries trimmed to 10; lowest two (1, 2) are dropped', () => {
+    const adapter = makeStubAdapter();
+    const s = createSave(adapter);
+    let last;
+    for (let i = 1; i <= 12; i++) {
+      last = s.recordPersonalBest('map1', { score: i, seed: `s${i}` });
+    }
+    expect(last).toHaveLength(10);
+    expect(last[0].score).toBe(12);
+    expect(last[last.length - 1].score).toBe(3);
+    expect(last.map((e) => e.score)).not.toContain(1);
+    expect(last.map((e) => e.score)).not.toContain(2);
+  });
+
+  it('per-map isolation: entry on map1 does not appear in map2', () => {
+    const adapter = makeStubAdapter();
+    const s = createSave(adapter);
+    s.recordPersonalBest('map1', { score: 99, seed: 'x' });
+    const map2Bests = s.load().personalBests.map2;
+    expect(!map2Bests || map2Bests.length === 0).toBe(true);
+  });
+
+  it('seed round-trip: seed field is preserved verbatim through record → load', () => {
+    const adapter = makeStubAdapter();
+    const s = createSave(adapter);
+    const entry = { score: 50, seed: 'my-special-seed-42' };
+    s.recordPersonalBest('map1', entry);
+    expect(s.load().personalBests.map1[0].seed).toBe('my-special-seed-42');
+  });
+
+  it('return value matches stored: returned array equals load().personalBests[mapId]', () => {
+    const adapter = makeStubAdapter();
+    const s = createSave(adapter);
+    s.recordPersonalBest('map1', { score: 10, seed: 'a' });
+    s.recordPersonalBest('map1', { score: 20, seed: 'b' });
+    const result = s.recordPersonalBest('map1', { score: 15, seed: 'c' });
+    expect(result).toEqual(s.load().personalBests.map1);
+  });
+
+  it('tie handling: two entries with identical scores both survive', () => {
+    const adapter = makeStubAdapter();
+    const s = createSave(adapter);
+    s.recordPersonalBest('map1', { score: 77, seed: 'x' });
+    const result = s.recordPersonalBest('map1', { score: 77, seed: 'y' });
+    expect(result).toHaveLength(2);
+    expect(result.every((e) => e.score === 77)).toBe(true);
+  });
+});
