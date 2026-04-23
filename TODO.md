@@ -14,7 +14,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 
 ## Phase 0 — Project bootstrap
 
-- [ ] **0.1 Initialize Node project.** `npm init -y`, set `"type": "module"`, set engines to Node 24. Commit `package.json` only.
+- [x] **0.1 Initialize Node project.** `npm init -y`, set `"type": "module"`, set engines to Node 24. Commit `package.json` only.
   - Acceptance: `node --version` matches engines; `package.json` exists with ESM set.
 
 - [ ] **0.2 Install dev toolchain.** Install latest stable `vite`, `vitest`, `@biomejs/biome`, `phaser`. Add scripts: `dev`, `build`, `preview`, `test`, `test:watch`, `lint`, `format` (per TECHSPEC §8).
