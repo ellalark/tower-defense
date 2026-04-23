@@ -86,7 +86,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 
 ## Phase 3 — Content data (first map worth of content)
 
-- [ ] **3.1 Enemy content — 9 archetypes.** One file per archetype under `src/content/enemies/` (grunt, tank, fast, flying, shielded, stealth, splitter, healer, boss). Stats are placeholders; balancing happens later.
+- [x] **3.1 Enemy content — 9 archetypes.** One file per archetype under `src/content/enemies/` (grunt, tank, fast, flying, shielded, stealth, splitter, healer, boss). Stats are placeholders; balancing happens later.
   - Acceptance: index re-exports all 9; a test instantiates an `Enemy` from each definition and ticks one frame without error.
 
 - [ ] **3.2 Tower content — 6 archetypes.** One file per archetype under `src/content/towers/` (singleTargetDps, splash, slow, chain, support, economy). Each defines 3–5 upgrade levels and a placeholder ability.
