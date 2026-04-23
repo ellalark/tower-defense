@@ -1,4 +1,6 @@
 import * as Phaser from 'phaser';
+import { mainMenuPanel } from '../ui/components/MainMenuPanel.js';
+import { mount } from '../ui/render.js';
 
 export class MainMenuScene extends Phaser.Scene {
   constructor() {
@@ -7,11 +9,15 @@ export class MainMenuScene extends Phaser.Scene {
 
   create() {
     this.cameras.main.setBackgroundColor('#102030');
-    this.add
-      .text(this.scale.width / 2, this.scale.height / 2, 'Main Menu', {
-        fontSize: '48px',
-        color: '#ffffff',
-      })
-      .setOrigin(0.5);
+
+    this._ui = mount(document.getElementById('ui'), mainMenuPanel, {
+      on: {
+        'click [data-action="play"]': () => this.scene.start('MapSelect'),
+        'click [data-action="settings"]': () => console.log('settings'),
+        'click [data-action="quit"]': () => console.log('quit'),
+      },
+    });
+
+    this.events.once('shutdown', () => this._ui.unmount());
   }
 }

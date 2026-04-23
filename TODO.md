@@ -134,7 +134,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **6.1 PreloadScene with placeholder assets.** Fetch a Kenney CC0 pack, commit needed sprites under `/assets/sprites`. PreloadScene loads UI atlas, shared enemy sprites, shared SFX, shows a progress bar, moves to MainMenuScene.
   - Acceptance: loading bar renders; no 404s; MainMenuScene is reached.
 
-- [ ] **6.2 MainMenuScene.** Minimal DOM overlay with Play, Settings, Quit (Quit may be a no-op in browser). Play goes to MapSelectScene.
+- [x] **6.2 MainMenuScene.** Minimal DOM overlay with Play, Settings, Quit (Quit may be a no-op in browser). Play goes to MapSelectScene.
   - Acceptance: buttons route correctly; keyboard not required.
 
 - [ ] **6.3 MapSelectScene (Map 1 only).** DOM panel lists Map 1 as unlocked and any locked placeholders as disabled. Selecting Map 1 launches GameScene with the map id.

@@ -4,9 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tower Defense</title>
+    <style>
+      body {
+        margin: 0;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      #game,
+      #ui {
+        position: absolute;
+        width: 1280px;
+        height: 720px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      #ui {
+        pointer-events: none;
+      }
+    </style>
   </head>
   <body>
     <div id="game"></div>
+    <div id="ui"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
