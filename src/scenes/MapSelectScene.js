@@ -1,4 +1,10 @@
 import * as Phaser from 'phaser';
+import { createLocalStorageAdapter } from '../save/localStorageAdapter.js';
+import { createSave } from '../save/save.js';
+import { mapSelectPanel } from '../ui/components/MapSelectPanel.js';
+import { mount } from '../ui/render.js';
+
+const save = createSave(createLocalStorageAdapter());
 
 export class MapSelectScene extends Phaser.Scene {
   constructor() {
@@ -6,12 +12,20 @@ export class MapSelectScene extends Phaser.Scene {
   }
 
   create() {
-    this.cameras.main.setBackgroundColor('#203040');
-    this.add
-      .text(this.scale.width / 2, this.scale.height / 2, 'Map Select (stub)', {
-        fontSize: '36px',
-        color: '#e0f0ff',
-      })
-      .setOrigin(0.5);
+    this.cameras.main.setBackgroundColor('#18283a');
+
+    const { personalBests } = save.load();
+
+    this._ui = mount(document.getElementById('ui'), () => mapSelectPanel({ personalBests }), {
+      on: {
+        'click [data-action="back"]': () => this.scene.start('MainMenu'),
+        'click [data-action="select-map"]': (e) => {
+          const { mapId } = e.target.closest('[data-map-id]').dataset;
+          this.scene.start('Game', { mapId });
+        },
+      },
+    });
+
+    this.events.once('shutdown', () => this._ui.unmount());
   }
 }

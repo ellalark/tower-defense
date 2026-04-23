@@ -137,7 +137,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **6.2 MainMenuScene.** Minimal DOM overlay with Play, Settings, Quit (Quit may be a no-op in browser). Play goes to MapSelectScene.
   - Acceptance: buttons route correctly; keyboard not required.
 
-- [ ] **6.3 MapSelectScene (Map 1 only).** DOM panel lists Map 1 as unlocked and any locked placeholders as disabled. Selecting Map 1 launches GameScene with the map id.
+- [x] **6.3 MapSelectScene (Map 1 only).** DOM panel lists Map 1 as unlocked and any locked placeholders as disabled. Selecting Map 1 launches GameScene with the map id.
   - Acceptance: unlocked map selectable; locked entries disabled; GameScene receives the id via scene data.
 
 - [ ] **6.4 GameScene shell + tick integration.** GameScene loads Map 1 assets, wires `tickLoop` into `update(time, delta)`, respects pause/speed from the store. No entities yet — just a ticking empty world.

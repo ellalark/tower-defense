@@ -1,5 +1,6 @@
 import * as Phaser from 'phaser';
 import { BootScene } from './scenes/BootScene.js';
+import { GameScene } from './scenes/GameScene.js';
 import { MainMenuScene } from './scenes/MainMenuScene.js';
 import { MapSelectScene } from './scenes/MapSelectScene.js';
 import { PreloadScene } from './scenes/PreloadScene.js';
@@ -9,7 +10,7 @@ const config = {
   parent: 'game',
   width: 1280,
   height: 720,
-  scene: [BootScene, PreloadScene, MainMenuScene, MapSelectScene],
+  scene: [BootScene, PreloadScene, MainMenuScene, MapSelectScene, GameScene],
 };
 
 export const game = new Phaser.Game(config);
