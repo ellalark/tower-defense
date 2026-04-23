@@ -89,7 +89,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **3.1 Enemy content — 9 archetypes.** One file per archetype under `src/content/enemies/` (grunt, tank, fast, flying, shielded, stealth, splitter, healer, boss). Stats are placeholders; balancing happens later.
   - Acceptance: index re-exports all 9; a test instantiates an `Enemy` from each definition and ticks one frame without error.
 
-- [ ] **3.2 Tower content — 6 archetypes.** One file per archetype under `src/content/towers/` (singleTargetDps, splash, slow, chain, support, economy). Each defines 3–5 upgrade levels and a placeholder ability.
+- [x] **3.2 Tower content — 6 archetypes.** One file per archetype under `src/content/towers/` (singleTargetDps, splash, slow, chain, support, economy). Each defines 3–5 upgrade levels and a placeholder ability.
   - Acceptance: index re-exports all 6; a test instantiates a `Tower` for each, upgrades it through all levels, and triggers its ability once.
 
 - [x] **3.3 Map 1 data.** `src/content/maps/map1.js`: waypoints for a single-path level, buildable-tile mask, theme key `"cute-alien-planet"`, target wave (e.g. 30), final-boss reference.
