@@ -8,5 +8,6 @@ export const fast = {
   flags: { flying: false, stealth: false, shielded: false },
   baseDamage: 1,
   bountyOnKill: 2,
+  spawnCost: 1,
   art: { atlas: 'enemies', frame: 'fast' },
 };

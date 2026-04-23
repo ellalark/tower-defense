@@ -8,5 +8,6 @@ export const shielded = {
   flags: { flying: false, stealth: false, shielded: true },
   baseDamage: 2,
   bountyOnKill: 6,
+  spawnCost: 3,
   art: { atlas: 'enemies', frame: 'shielded' },
 };

@@ -8,6 +8,7 @@ export const boss = {
   flags: { flying: false, stealth: false, shielded: false },
   baseDamage: 20,
   bountyOnKill: 50,
+  spawnCost: 20,
   art: { atlas: 'enemies', frame: 'boss' },
   boss: true,
 };
