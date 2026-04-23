@@ -8,5 +8,6 @@ export const grunt = {
   flags: { flying: false, stealth: false, shielded: false },
   baseDamage: 1,
   bountyOnKill: 3,
+  spawnCost: 1,
   art: { atlas: 'enemies', frame: 'grunt' },
 };

@@ -8,6 +8,7 @@ export const splitter = {
   flags: { flying: false, stealth: false, shielded: false },
   baseDamage: 2,
   bountyOnKill: 8,
+  spawnCost: 3,
   art: { atlas: 'enemies', frame: 'splitter' },
   splitsInto: ['grunt', 'grunt', 'grunt'],
 };

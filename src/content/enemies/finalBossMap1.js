@@ -7,6 +7,7 @@ export const finalBossMap1 = {
   flags: { flying: false, stealth: false, shielded: false },
   baseDamage: 40,
   bountyOnKill: 100,
+  spawnCost: 40,
   art: { atlas: 'enemies', frame: 'finalBossMap1' },
   boss: true,
 };

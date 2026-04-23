@@ -141,6 +141,40 @@ describe('isValidWaveDefinition', () => {
   });
 });
 
+describe('isValidWaveEntry — hpMul / dmgMul', () => {
+  it('accepts entry with valid hpMul and dmgMul', () => {
+    expect(isValidWaveEntry({ ...validEntry, hpMul: 1.5, dmgMul: 2.0 })).toBe(true);
+  });
+
+  it('accepts entry without hpMul or dmgMul', () => {
+    expect(isValidWaveEntry(validEntry)).toBe(true);
+  });
+
+  it('rejects hpMul: 0', () => {
+    expect(isValidWaveEntry({ ...validEntry, hpMul: 0 })).toBe(false);
+  });
+
+  it('rejects hpMul: -1', () => {
+    expect(isValidWaveEntry({ ...validEntry, hpMul: -1 })).toBe(false);
+  });
+
+  it('rejects hpMul: "x"', () => {
+    expect(isValidWaveEntry({ ...validEntry, hpMul: 'x' })).toBe(false);
+  });
+
+  it('rejects dmgMul: 0', () => {
+    expect(isValidWaveEntry({ ...validEntry, dmgMul: 0 })).toBe(false);
+  });
+
+  it('rejects dmgMul: -1', () => {
+    expect(isValidWaveEntry({ ...validEntry, dmgMul: -1 })).toBe(false);
+  });
+
+  it('rejects dmgMul: "x"', () => {
+    expect(isValidWaveEntry({ ...validEntry, dmgMul: 'x' })).toBe(false);
+  });
+});
+
 describe('validateWaveDefinition', () => {
   it('returns def on success', () => {
     expect(validateWaveDefinition(validDef)).toBe(validDef);
@@ -160,6 +194,18 @@ describe('validateWaveDefinition', () => {
         ...validDef,
         meta: { ...validMeta, isFinal: true, isBoss: false },
       }),
+    ).toThrow(Error);
+  });
+
+  it('throws for entry with hpMul: 0', () => {
+    expect(() =>
+      validateWaveDefinition({ ...validDef, entries: [{ ...validEntry, hpMul: 0 }] }),
+    ).toThrow(Error);
+  });
+
+  it('throws for entry with dmgMul: -1', () => {
+    expect(() =>
+      validateWaveDefinition({ ...validDef, entries: [{ ...validEntry, dmgMul: -1 }] }),
     ).toThrow(Error);
   });
 });

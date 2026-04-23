@@ -1,10 +1,18 @@
 /** WaveDefinition: entries[] each spawn enemyId count times, delayTicks absolute from wave tick 0, spacingTicks between spawns. meta carries waveNumber, isBoss, isFinal (isFinal implies isBoss). */
 
-export const WAVE_ENTRY_KEYS = Object.freeze(['enemyId', 'count', 'spacingTicks', 'delayTicks']);
+export const WAVE_ENTRY_KEYS = Object.freeze([
+  'enemyId',
+  'count',
+  'spacingTicks',
+  'delayTicks',
+  'hpMul',
+  'dmgMul',
+]);
 export const WAVE_META_KEYS = Object.freeze(['waveNumber', 'isBoss', 'isFinal']);
 
 const isPositiveInt = (v) => Number.isInteger(v) && v > 0;
 const isNonNegativeInt = (v) => Number.isInteger(v) && v >= 0;
+const isPositiveFinite = (v) => typeof v === 'number' && Number.isFinite(v) && v > 0;
 
 export function isValidWaveEntry(entry) {
   if (!entry) return false;
@@ -12,6 +20,8 @@ export function isValidWaveEntry(entry) {
   if (!isPositiveInt(entry.count)) return false;
   if (!isNonNegativeInt(entry.spacingTicks)) return false;
   if (!isNonNegativeInt(entry.delayTicks)) return false;
+  if (entry.hpMul !== undefined && !isPositiveFinite(entry.hpMul)) return false;
+  if (entry.dmgMul !== undefined && !isPositiveFinite(entry.dmgMul)) return false;
   return true;
 }
 

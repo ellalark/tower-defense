@@ -8,6 +8,7 @@ export const healer = {
   flags: { flying: false, stealth: false, shielded: false },
   baseDamage: 1,
   bountyOnKill: 10,
+  spawnCost: 4,
   art: { atlas: 'enemies', frame: 'healer' },
   healsRadius: 100,
   healsPerTick: 1,

@@ -8,5 +8,6 @@ export const tank = {
   flags: { flying: false, stealth: false, shielded: false },
   baseDamage: 5,
   bountyOnKill: 15,
+  spawnCost: 5,
   art: { atlas: 'enemies', frame: 'tank' },
 };

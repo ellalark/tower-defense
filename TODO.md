@@ -102,7 +102,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 
 ## Phase 4 — Wave system
 
-- [ ] **4.1 Procedural wave generator.** `src/systems/waveSpawner.js`: `generate(waveNumber, mapDifficulty, rng)` returns a `WaveDefinition` using curves for enemy-type mix, count, spacing, HP/damage scaling. Invariants: count ≤ curve budget; enemy-type variety ≥ 2 after some wave N.
+- [x] **4.1 Procedural wave generator.** `src/systems/waveSpawner.js`: `generate(waveNumber, mapDifficulty, rng)` returns a `WaveDefinition` using curves for enemy-type mix, count, spacing, HP/damage scaling. Invariants: count ≤ curve budget; enemy-type variety ≥ 2 after some wave N.
   - Acceptance: property tests over 1..200 waves assert invariants; determinism test confirms same seed/inputs → identical output.
 
 - [ ] **4.2 Wave runner.** `src/systems/waveRunner.js`: given a sequence of `WaveDefinition`s (scripted map overlay + procedural fill), emits spawn events at the right ticks via the event bus. Handles continuous flow (PRD §7) — no gap between waves.
