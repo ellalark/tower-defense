@@ -73,7 +73,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **2.4 Projectile logic.** `src/entities/logic/Projectile.js`: straight-line + homing modes. `tick(dt, world)` advances; on collision calls `target.applyDamage` and marks for removal. Splash variant damages all enemies within radius.
   - Acceptance: tests for hit-at-target, splash radius inclusion/exclusion, homing updating heading, and expired lifetimes.
 
-- [ ] **2.5 Targeting system.** `src/systems/targeting.js`: pure functions — `selectTarget(tower, enemies, mode)` with modes `first`, `last`, `strongest`, `closest`, `manual`. "Manual" honors a world-level manual-target id if set and in range.
+- [x] **2.5 Targeting system.** `src/systems/targeting.js`: pure functions — `selectTarget(tower, enemies, mode)` with modes `first`, `last`, `strongest`, `closest`, `manual`. "Manual" honors a world-level manual-target id if set and in range.
   - Acceptance: tests for each mode with a scripted enemy list + tower range.
 
 - [ ] **2.6 Tower logic class.** `src/entities/logic/Tower.js`: fields for stats, level, cooldown (ticks), ability cooldown, range, targeting mode. `tick(dt, world)` picks a target and fires when off-cooldown. `upgrade()` applies next-level stats and deducts cost. `canActivate()` / `activate(rng, world)` for active ability.
