@@ -115,16 +115,16 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 
 ## Phase 5 — Economy, scoring, run lifecycle
 
-- [ ] **5.1 Economy module.** `src/systems/economy.js`: `earn(source, amount)`, `spend(amount)` (returns boolean), `applyWaveBonus(waveNumber)`, `tickPassive(towers)`. Reads/writes currency via the store.
+- [x] **5.1 Economy module.** `src/systems/economy.js`: `earn(source, amount)`, `spend(amount)` (returns boolean), `applyWaveBonus(waveNumber)`, `tickPassive(towers)`. Reads/writes currency via the store.
   - Acceptance: tests verify: can't overspend; wave bonus scales; economy towers contribute per-tick income.
 
-- [ ] **5.2 Scoring module.** `src/systems/scoring.js`: `computeScore({waveReached, mapDifficulty, kills, bossKills})` using weights from a `SCORING_WEIGHTS` constant (exact weights placeholder — PRD §12.1 open question).
+- [x] **5.2 Scoring module.** `src/systems/scoring.js`: `computeScore({waveReached, mapDifficulty, kills, bossKills})` using weights from a `SCORING_WEIGHTS` constant (exact weights placeholder — PRD §12.1 open question).
   - Acceptance: tests for monotonicity (more waves → higher), difficulty multiplier effect, and boss-bonus application.
 
-- [ ] **5.3 Personal bests.** Helpers in `src/save/save.js`: `recordPersonalBest(mapId, entry)` keeps top N per map, sorted desc. Entry includes seed (TECHSPEC §4.4).
+- [x] **5.3 Personal bests.** Helpers in `src/save/save.js`: `recordPersonalBest(mapId, entry)` keeps top N per map, sorted desc. Entry includes seed (TECHSPEC §4.4).
   - Acceptance: tests for top-N trimming, ordering, per-map isolation.
 
-- [ ] **5.4 Run lifecycle controller.** `src/systems/runLifecycle.js`: orchestrates run start (set seed, reset store, grant starting budget, prep phase flag) and run end (compute score, persist PB, unlock next map + tower if final boss defeated).
+- [x] **5.4 Run lifecycle controller.** `src/systems/runLifecycle.js`: orchestrates run start (set seed, reset store, grant starting budget, prep phase flag) and run end (compute score, persist PB, unlock next map + tower if final boss defeated).
   - Acceptance: tests simulate a winning run and a losing run; verify unlocks happen only on final-boss win.
 
 ---

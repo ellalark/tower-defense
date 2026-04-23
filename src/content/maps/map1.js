@@ -26,6 +26,8 @@ export const map1 = {
     cellSize: 40,
     buffer: 1,
   }),
+  unlocksMapId: 'map2',
+  unlocksTowerId: 'splash',
 };
 
 export default map1;
