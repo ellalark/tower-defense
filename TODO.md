@@ -42,7 +42,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **1.3 Event bus.** `src/state/events.js`: tiny pub/sub — `on(name, fn)`, `off(name, fn)`, `emit(name, payload)`. Synchronous, listeners run in subscription order.
   - Acceptance: unit tests for subscribe, unsubscribe, emit-order, and that throwing listeners don't break siblings.
 
-- [ ] **1.4 State store.** `src/state/store.js`: singleton with `getState`, `setState(partial)` (shallow merge), `subscribe(listener)`, `reset()`. Initial shape includes fields in TECHSPEC §4.2.
+- [x] **1.4 State store.** `src/state/store.js`: singleton with `getState`, `setState(partial)` (shallow merge), `subscribe(listener)`, `reset()`. Initial shape includes fields in TECHSPEC §4.2.
   - Acceptance: tests verify merge semantics, subscribe fires on change, reset restores initial shape.
 
 - [ ] **1.5 Save schema + migrations.** `src/save/schema.js`: defines v1 shape (per TECHSPEC §6.4), exports `CURRENT_VERSION = 1` and `migrations = []`. Include a `migrate(oldState)` that walks versions in order.
