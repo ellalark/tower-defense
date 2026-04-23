@@ -86,13 +86,13 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 
 ## Phase 3 — Content data (first map worth of content)
 
-- [ ] **3.1 Enemy content — 9 archetypes.** One file per archetype under `src/content/enemies/` (grunt, tank, fast, flying, shielded, stealth, splitter, healer, boss). Stats are placeholders; balancing happens later.
+- [x] **3.1 Enemy content — 9 archetypes.** One file per archetype under `src/content/enemies/` (grunt, tank, fast, flying, shielded, stealth, splitter, healer, boss). Stats are placeholders; balancing happens later.
   - Acceptance: index re-exports all 9; a test instantiates an `Enemy` from each definition and ticks one frame without error.
 
 - [ ] **3.2 Tower content — 6 archetypes.** One file per archetype under `src/content/towers/` (singleTargetDps, splash, slow, chain, support, economy). Each defines 3–5 upgrade levels and a placeholder ability.
   - Acceptance: index re-exports all 6; a test instantiates a `Tower` for each, upgrades it through all levels, and triggers its ability once.
 
-- [ ] **3.3 Map 1 data.** `src/content/maps/map1.js`: waypoints for a single-path level, buildable-tile mask, theme key `"cute-alien-planet"`, target wave (e.g. 30), final-boss reference.
+- [x] **3.3 Map 1 data.** `src/content/maps/map1.js`: waypoints for a single-path level, buildable-tile mask, theme key `"cute-alien-planet"`, target wave (e.g. 30), final-boss reference.
   - Acceptance: test loads the map, runs `buildPath` on its waypoints, confirms total length > 0 and buildable mask has > 0 valid cells.
 
 - [ ] **3.4 Wave definition shape + Map 1 scripted waves.** Define `WaveDefinition = { entries: [{enemyId, count, spacingTicks, delayTicks}], meta }` in `src/content/waves/_shape.js`. Author scripted intro waves (1–3), every milestone boss wave (10, 20), and final boss (30) for Map 1.
