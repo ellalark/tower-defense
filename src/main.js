@@ -1,18 +1,14 @@
 import * as Phaser from 'phaser';
-
-class PlaceholderScene extends Phaser.Scene {
-  constructor() {
-    super('Placeholder');
-  }
-}
+import { BootScene } from './scenes/BootScene.js';
+import { MainMenuScene } from './scenes/MainMenuScene.js';
+import { PreloadScene } from './scenes/PreloadScene.js';
 
 const config = {
   type: Phaser.AUTO,
   parent: 'game',
   width: 1280,
   height: 720,
-  backgroundColor: '#1a1a2e',
-  scene: [PlaceholderScene],
+  scene: [BootScene, PreloadScene, MainMenuScene],
 };
 
 export const game = new Phaser.Game(config);
