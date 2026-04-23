@@ -39,7 +39,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **1.2 Constants module.** `src/config/constants.js` exports `TICK_MS = 1000/60`, `BASE_HP_DEFAULT`, `STARTING_BUDGET_DEFAULT`, `SPEED_MULTIPLIERS = [1,2,3]`, and a `SAVE_NAMESPACE` string.
   - Acceptance: imported by later modules; no tests needed.
 
-- [ ] **1.3 Event bus.** `src/state/events.js`: tiny pub/sub — `on(name, fn)`, `off(name, fn)`, `emit(name, payload)`. Synchronous, listeners run in subscription order.
+- [x] **1.3 Event bus.** `src/state/events.js`: tiny pub/sub — `on(name, fn)`, `off(name, fn)`, `emit(name, payload)`. Synchronous, listeners run in subscription order.
   - Acceptance: unit tests for subscribe, unsubscribe, emit-order, and that throwing listeners don't break siblings.
 
 - [ ] **1.4 State store.** `src/state/store.js`: singleton with `getState`, `setState(partial)` (shallow merge), `subscribe(listener)`, `reset()`. Initial shape includes fields in TECHSPEC §4.2.
