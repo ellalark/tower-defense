@@ -70,7 +70,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **2.3 Status effects.** `src/entities/logic/StatusEffect.js` + helpers in `src/systems/damage.js` for slow, stun, burn (DoT). Effects stack per the rules: same-type refreshes duration; cross-type coexists.
   - Acceptance: tests on an Enemy instance: slow reduces effective speed; stun halts movement; burn ticks damage each tick until expiry.
 
-- [ ] **2.4 Projectile logic.** `src/entities/logic/Projectile.js`: straight-line + homing modes. `tick(dt, world)` advances; on collision calls `target.applyDamage` and marks for removal. Splash variant damages all enemies within radius.
+- [x] **2.4 Projectile logic.** `src/entities/logic/Projectile.js`: straight-line + homing modes. `tick(dt, world)` advances; on collision calls `target.applyDamage` and marks for removal. Splash variant damages all enemies within radius.
   - Acceptance: tests for hit-at-target, splash radius inclusion/exclusion, homing updating heading, and expired lifetimes.
 
 - [ ] **2.5 Targeting system.** `src/systems/targeting.js`: pure functions — `selectTarget(tower, enemies, mode)` with modes `first`, `last`, `strongest`, `closest`, `manual`. "Manual" honors a world-level manual-target id if set and in range.
