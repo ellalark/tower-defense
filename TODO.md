@@ -64,7 +64,7 @@ Implementation checklist for the game described in `PRD.md` and `TECHSPEC.md`. R
 - [x] **2.1 Pathing module.** `src/systems/pathing.js`: `buildPath(waypoints)` returns a polyline with cached segment lengths; `pointAtDistance(path, d)` returns `{x, y, segmentIndex}` clamped to total length.
   - Acceptance: tests for straight, L-shape, and multi-segment paths; out-of-range distances clamp correctly.
 
-- [ ] **2.2 Enemy logic class.** `src/entities/logic/Enemy.js`: fields for hp, speed (units/tick), path, distanceTravelled, armor, flags (flying, stealth, shielded). `tick(dt, world)` advances position. `applyDamage(amount, type)` respects soft-counter modifiers.
+- [x] **2.2 Enemy logic class.** `src/entities/logic/Enemy.js`: fields for hp, speed (units/tick), path, distanceTravelled, armor, flags (flying, stealth, shielded). `tick(dt, world)` advances position. `applyDamage(amount, type)` respects soft-counter modifiers.
   - Acceptance: tests for movement under a 60Hz tick, reaching the end (triggers `world.onBaseHit`), damage application, and death (triggers `world.onEnemyKilled`).
 
 - [ ] **2.3 Status effects.** `src/entities/logic/StatusEffect.js` + helpers in `src/systems/damage.js` for slow, stun, burn (DoT). Effects stack per the rules: same-type refreshes duration; cross-type coexists.
