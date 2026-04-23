@@ -1,13 +1,14 @@
 import { pointAtDistance } from '../../systems/pathing.js';
 
 export class Enemy {
-  constructor({ hp, speed, path, armor, flags, baseDamage }) {
+  constructor({ hp, speed, path, armor, flags, baseDamage, archetype }) {
     this.hp = hp;
     this.speed = speed;
     this.path = path;
     this.armor = armor;
     this.flags = flags;
     this.baseDamage = baseDamage;
+    this.archetype = archetype;
     this.distanceTravelled = 0;
     this.effects = [];
     const pos = pointAtDistance(path, 0);
